@@ -33,6 +33,27 @@ const questions = [
     message: "Enter test instructions.",
     name: "test",
   },
+  {
+    type: "list",
+    message: "Choose a license.",
+    name: "license",
+    choices: [
+      "ISC",
+      "MIT",
+      "Microsoft Public License",
+      "Educational Community License v2.0",
+    ],
+  },
+  {
+    type: "input",
+    message: "Enter Github username.",
+    name: "username",
+  },
+  {
+    type: "input",
+    message: "Enter your email address.",
+    name: "email",
+  },
 ];
 
 // function to write README file
