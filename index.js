@@ -70,31 +70,31 @@ function writeToFile(filename, data) {
 function init() {
   inquirer.prompt(questions).then((answers) => {
     const readme = `
-    # ${answers.title}
-    ### ${answers.license}
-    ## Description
-    ${answers.description}
-    ## Table of Contents
-    [Installation](#installation)
-    [Usage](#usage)
-    [License](#license)
-    [Contributing](#contributing)
-    Tests](#tests)
-    [Questions](#questions)
-    ## Installation
-    ${answers.installation}
-    ## Usage
-    ${answers.usage}
-    ## Contributing
-    ${answers.contribution}
-    ## Test
-    ${answers.test}
-    ## License
-    The application is covered by the ${answers.license} license.
-    ## Questions
-    [My Github Profile](https://github.com/${answers.username})
-    If you have furthe
-    `;
+  # ${answers.title}
+  ### ${answers.license}
+  ## Description
+  ${answers.description}
+  ## Table of Contents
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contributing](#contributing)
+  * [Tests](#tests)
+  * [Questions](#questions)
+  ## Installation
+  ${answers.installation}
+  ## Usage
+  ${answers.usage}
+  ## Contributing
+  ${answers.contribution}
+  ## Test
+  ${answers.test}
+  ## License
+  The application is covered by the ${answers.license} license.
+  ## Questions
+  [My Github Profile](https://github.com/${answers.username})
+  If you have questions you can email me at ${answers.email}
+  `;
     writeToFile("./README.md", readme);
   });
 }
