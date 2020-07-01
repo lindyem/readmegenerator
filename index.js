@@ -1,5 +1,5 @@
-var inquirer = require("inquirer");
-var fs = require("fs");
+const inquirer = require("inquirer");
+const fs = require("fs");
 
 // array of questions for user
 const questions = [
@@ -16,7 +16,7 @@ const questions = [
   {
     type: "input",
     message: "Enter installation instructions.",
-    name: "instructions",
+    name: "installation",
   },
   {
     type: "input",
@@ -57,10 +57,47 @@ const questions = [
 ];
 
 // function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(filename, data) {
+  fs.writeFile(filename, data, function (err) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("Success!");
+  });
+}
 
 // function to initialize program
-function init() {}
+function init() {
+  inquirer.prompt(questions).then((answers) => {
+    const readme = `
+    # ${answers.title}
+    ### ${answers.license}
+    ## Description
+    ${answers.description}
+    ## Table of Contents
+    [Installation](#installation)
+    [Usage](#usage)
+    [License](#license)
+    [Contributing](#contributing)
+    Tests](#tests)
+    [Questions](#questions)
+    ## Installation
+    ${answers.installation}
+    ## Usage
+    ${answers.usage}
+    ## Contributing
+    ${answers.contribution}
+    ## Test
+    ${answers.test}
+    ## License
+    The application is covered by the ${answers.license} license.
+    ## Questions
+    [My Github Profile](https://github.com/${answers.username})
+    If you have furthe
+    `;
+    writeToFile("./README.md", readme);
+  });
+}
 
 // function call to initialize program
 init();
